@@ -8,18 +8,24 @@ app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters,k=256))
 
 
-#index.htmlへの接続
-@app.route('/', methods='[GET]')
+# index.htmlへの接続
+@app.route('/', methods=['GET'])
 def index():
     msg = request.args.get('msg')
     if msg == None:
         return render_template('index.html')
     else:
         return render_template('index.html', msg=msg)
+    
     return render_template('index.html')
 
+
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
+
 #ログイン機能
-@app.route('/', methods='[POST]')
+@app.route('/', methods=['POST'])
 def login():
     mail = request.form.get('mail') #メールアドレスとパスワードをlogin画面から取得
     password = request.form.get('password')
@@ -48,9 +54,9 @@ def logout():
 #新規アカウント登録機能(利用者)
 @app.route('/register_account')
 def register_form():
-    return render_template('register-account.html')
+    return render_template('register-student.html')
 
-@app.route('register_exe', methods=['POST'])
+@app.route('/register_exe', methods=['POST'])
 def register_exe():
     mail = request.form.get('mail') #アカウント登録画面から入力情報を取得
     password = request.form.get('password')

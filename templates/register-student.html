@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>ユーザ登録画面</h3>
+    {% if error != null %}
+        <p style="color:red">{{error}}</p>
+    {%endif%}
+
+    <form action="{{url_for('register_exe')}}" method="post">
+        学籍番号: <input type="number" name="student_number">
+        クラス:<select size=1 name=class>
+              <option valuee="system1-1">情報システム科1年</option>
+              <option valuee="system1-2">情報システム科2年</option>
+              <option valuee="system2-1">総合システム工学科1年</option>
+              <option valuee="system1-1">総合システム工学科2年</option>
+              <option valuee="system1-2">総合システム工学科3年</option>
+              <option valuee="system3-1">高度情報工学科1</option>
+              <option valuee="system3-2">高度情報工学科2</option>
+              <option valuee="system3-3">高度情報工学科3</option>
+              <option valuee="system3-4">高度情報工学科4</option>
+        </select>
+              
+        ユーザー名：<input type="text" name="username"><br>
+        パスワード：<input type="password" name="password"><br>
+        <button type="submit">登録</button>
+    </form>
+</body>
+</html>
