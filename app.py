@@ -1,9 +1,16 @@
 from flask import Flask,render_template,url_for,redirect,request,session
 import db,string,random
+from report import report_bp
 import mail
 from datetime import timedelta
 
+
+
+
 app = Flask(__name__)
+app.register_blueprint(report_bp)
+
+
 #セッション作成
 app.secret_key = ''.join(random.choices(string.ascii_letters,k=256))
 
@@ -32,9 +39,10 @@ def login():
     
     #ログイン成功処理
     if db.login(mail, password):
-        session['user'] = True #sessionにキー'user'とバリュー'True'を保存
+        user_information = db.select_account(mail)
         session.permanent = True
-        app.permanent_session_lifetime = timedelta(minutes=60) #セッション有効期限設定
+        session['user'] = user_information #sessionにキー'user'とバリュー'True'を保存
+        app.permanent_session_lifetime = timedelta(minutes=120) #セッション有効期限設定
         return redirect(url_for('mypage'))
     
     #ログイン失敗処理
@@ -42,6 +50,23 @@ def login():
         error = 'ログインに失敗しました。'
         input_data = {'mail':mail,'password':password}
         return render_template('index.html',error=error,data=input_data)
+
+# マイページに遷移する
+@app.route('/mypage', methods=['GET'])
+def mypage():
+    if 'user' in session:   
+        name = session["user"]
+        
+        student_class = db.select_class(name[2])
+        session.permanent = True
+        session['class'] = student_class
+        app.permanent_session_lifetime = timedelta(minutes=120)
+    
+        
+        return render_template('mypage.html',name=name)
+    else:
+        return redirect(url_for('index'))
+
 
 
 #ログアウト機能
@@ -58,26 +83,44 @@ def register_form():
 
 @app.route('/register_exe', methods=['POST'])
 def register_exe():
-    mail = request.form.get('mail') #アカウント登録画面から入力情報を取得
+    
+    student_number = request.form.get('student_number') #アカウント登録画面から入力情報を取得
+    school_class = request.form.get('school_class')
+    user_name = request.form.get('user_name')
+    mail = request.form.get('mail') 
     password = request.form.get('password')
     
     #入力情報が未入力だった場合の処理
+    if student_number == '':
+        error = '学籍番号が未入力です。'
+        return render_template('register-student.html', error=error, student_number=student_number, school_class=school_class, user_name=user_name, mail=mail, password=password)
+    
+    if school_class == '':
+        error = 'クラスが未入力です。'
+        return render_template('register-student.html', error=error, student_number=student_number, school_class=school_class, user_name=user_name, mail=mail, password=password)
+    
+    if user_name == '':
+        error = '氏名が未入力です。'
+        return render_template('register-student.html', error=error, student_number=student_number, school_class=school_class, user_name=user_name, mail=mail, password=password)
+    
     if mail == '':
         error = 'メールアドレスが未入力です。'
-        return render_template('register-account.html', error=error, mail=mail, password=password)
+        return render_template('register-student.html', error=error, student_number=student_number, school_class=school_class, user_name=user_name, mail=mail, password=password)
     
     if password == '':
         error = 'パスワードが未入力です。'
-        return render_template('register-account.html',error=error,mail=mail,password=password)
+        return render_template('register-student.html', error=error, student_number=student_number, school_class=school_class, user_name=user_name, mail=mail, password=password)
+    
+    
     
     #アカウント登録の結果を処理
-    count = db.insert_user(mail,password)
+    count = db.insert_student(student_number,school_class,user_name,mail,password)
     if count == 1:
         msg = '登録が完了しました。'
         return redirect(url_for('index',msg=msg))
     else:
-        error = '登録に失敗しました。'
-        return render_template('register-account.html',error=error)
+        error = '登録に失敗しました。既に同じメールアドレスが登録されている可能性があります。'
+        return render_template('register-student.html',error=error)
     
 # メール送信
 @app.route('/send',methods=['POST'])

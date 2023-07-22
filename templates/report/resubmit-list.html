@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>再提出</h3>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>会社名</th>
+            <th>合否</th>
+            <th>提出日</th>
+            <th></th>
+        </tr>
+        {%for x  in  resubmit_list:%}
+            <tr>
+                <td></td>
+                <td><a href="{{url_for('report.report_detail',report_id=x[0])}}">{{x[4]}}</a></td>
+                <td>{{x[2]}}</td>
+                <td>{{x[1]}}</td>
+                <td><button><a href="{{url_for('report.resubmit',report_id=x[0])}}">再提出</a></button></td>
+            </tr>
+        {%endfor%}
+    </table>
+</body>
+</html>

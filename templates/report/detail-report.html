@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報告書詳細</title>
+</head>
+<body>
+    <table border="1" rules="groups" style="text-align:left;">
+        <form action="{{url_for('report.report_edit')}}" method="post">
+        <tbody>
+                <input type="hidden" name="report_id" value="{{report_detail[0]}}">
+            <tr>
+                <th>提出日</th>
+                <td><input type="date" name="filing_date" value="{{report_detail[1]}}" required></td>
+            </tr>
+            
+            <tr>
+                <th>試験結果</th>
+                <td>
+                    <select size=1 name="result" required>
+                        <option  value="{{report_detail[2]}}">{{report_detail[2]}}</option>
+                        <option value="">-選択肢一覧-</option>
+                        <option value="合格">合格</option>
+                        <option value="不合格">不合格</option>
+                        <option value="辞退">辞退</option>
+                    </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>合否期日</th>
+                <td><input type="date" name="result_date" value="{{report_detail[3]}}"required></td>
+            </tr>
+            
+            <tr>
+                <th>会社名</th>
+                <td><input type="text" name="company_name" value="{{report_detail[4]}}" required></td>
+            </tr>
+            
+            <tr>
+                <th>電話</th>
+                <td><input type="tel" name="tel"  value="{{report_detail[5]}}" required></td>
+            </tr>
+            
+            <tr>
+                <th>所在地（ビル名等、詳しく記入）</th>
+                <td><input type="text" name="location"  value="{{report_detail[6]}}" required></td>
+            </tr>
+            
+            <tr>
+                <th>氏名</th>
+                <td><input type="text" name="name"  value="{{report_detail[7]}}" required></td>
+            </tr>
+            
+            <tr>
+                <th>学科</th>
+                <td>
+                <select size=1 name="school_class" required>
+                    <option  value="{{report_detail[8]}}">{{report_detail[8]}}</option>
+                    <option value="">-選択肢一覧-</option>
+                    <option value="情報システム科1年">情報システム科1年</option>
+                    <option value="情報システム科2年">情報システム科2年</option>
+                    <option value="総合システム工学科1年">総合システム工学科1年</option>
+                    <option value="総合システム工学科2年">総合システム工学科2年</option>
+                    <option value="総合システム工学科3年">総合システム工学科3年</option>
+                    <option value="高度情報工学科1">高度情報工学科1年</option>
+                    <option value="高度情報工学科2">高度情報工学科2年</option>
+                    <option value="高度情報工学科3">高度情報工学科3年</option>
+                    <option value="高度情報工学科4">高度情報工学科4年</option>
+                </select>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>職種</th>
+                <td><input type="text" name="occupation"  value="{{report_detail[9]}}"></td>
+            </tr>
+            
+            <tr>
+                <th>応募形態</th>
+                <td><select size=1 name="application_method" required>
+                    <option  value="{{report_detail[10]}}">{{report_detail[10]}}</option>
+                    <option value="">-選択肢一覧-</option>
+                    <option value="学校">学校</option>
+                    <option value="自己開拓">自己開拓</option>
+                    <option value="縁故">縁故</option>
+                    <option value="その他">その他</option>
+                </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th>試験内容</th>
+            </tr>
+
+            <tr>
+                <th>一次</th>
+                <td>
+                    日付：<input type="date" name="test1_date"  value="{{report_detail[11]}}"><br>
+                    時刻：<input type="time" name="test1_start_time"  value="{{report_detail[12]}}"> ~ <input type="time" name="test1_end_time" value="{{report_detail[13]}}"><br>
+                    区分：<select size=1 name="test1_division" required>
+                            <option  value="{{report_detail[14]}}">{{report_detail[14]}}</option>
+                            <option value="">-選択肢一覧-</option>
+                            <option value="筆記">筆記</option>
+                            <option value="面接">面接</option>
+                            <option value="両方">両方</option>
+                          </select><br>
+                    内容：<textarea name="test1_content"  cols="32" rows="8" required>{{report_detail[15]}}</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>ニ次</th>
+                <td>
+                    日付：<input type="date" name="test2_date"  value="{{report_detail[16]}}"><br>
+                    時刻：<input type="time" name="test2_start_time"  value="{{report_detail[17]}}"> ~ <input type="time" name="test2_end_time"  value="{{report_detail[18]}}"><br>
+                    区分：<select size=1 name="test2_division">
+                            <option  value="{{report_detail[19]}}">{{report_detail[19]}}</option>
+                            <option value="">-選択肢一覧-</option>
+                            <option value="筆記">筆記</option>
+                            <option value="面接">面接</option>
+                            <option value="両方">両方</option>
+                          </select><br>
+                    内容：<textarea name="test2_content"  cols="32" rows="8">{{report_detail[20]}}</textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>三次</th>
+                <td>
+                    日付：<input type="date" name="test3_date"   value="{{report_detail[21]}}"><br>
+                    時刻：<input type="time" name="test3_start_time"  value="{{report_detail[22]}}"> ~ <input type="time" name="test3_end_time"  value="{{report_detail[23]}}"><br>
+                    区分：<select size=1 name="test3_division">
+                            <option  value="{{report_detail[24]}}">{{report_detail[24]}}</option>
+                            <option value="">-選択肢一覧-</option>
+                            <option value="筆記">筆記</option>
+                            <option value="面接">面接</option>
+                            <option value="両方">両方</option>
+                          </select><br>
+                    内容:<textarea name="test3_content"  cols="32" rows="8" >{{report_detail[25]}}</textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>後輩へコメント</th>
+                <td><textarea name="comment"  cols="32" rows="8" required>{{report_detail[26]}}</textarea></td>
+            </tr>
+
+            <tr>
+                <th><button type="submit" style="text-align:center">編集</button></th>
+            <tr>
+        </tbody>
+    </form>
+    </table>
+</body>
+</html>

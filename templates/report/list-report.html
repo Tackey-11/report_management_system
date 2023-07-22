@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報告書管理システム</title>
+</head>
+<body>
+    {% if error != null %}
+    <p style="color:red">{{error}}</p>
+    {%endif%}
+     
+
+    <h3>作成した報告書</h3>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>会社名</th>
+            <th>合否</th>
+            <th>提出日</th>
+            <th></th>
+        </tr>
+       
+        {%for x  in  report_list:%}
+     
+            <tr>
+                <td></td>
+                <td><a href="{{url_for('report.report_detail',report_id=x[0])}}">{{x[4]}}</a></td>
+                <td>{{x[2]}}</td>
+                <td>{{x[1]}}</td>
+            </tr>
+        {%endfor%}
+       
+    <table>
+      
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <title>就活報告書管理システム</title>
+</head>
+<body>
+    <h3>マイページ</h3>
+    <p>{{name[3]}}さん</p>
+    <a href="{{url_for('report.report_create')}}">報告書作成</a>
+    <a href="{{url_for('logout')}}">ログアウト</a>
+    <a href="">検索</a>
+    <a href="{{url_for('report.report_list')}}">報告書編集</a>
+    <a href="{{url_for('report.resubmit_list')}}">再提出</a>
+</body>
+</html>
