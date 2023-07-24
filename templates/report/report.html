@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>報告書管理システム</title>
     <link rel="stylesheet" href="\static\css\report.css">
+   
 </head>
 <body>
     <h3 class="top" >報告書管理システム</h3>
-    <h3 class="heading03">再提出</h3>
-  
+    <h3 class="heading03">報告書一覧</h3>
 
+    <form action="{{url_for('report.search')}}" class="search-form-005">
+        <label>
+            <input type="search" name="word" placeholder="会社名">
+        </label>
+        <button type="submit">検索</button>
+    </form>
 
+   
+   
 
     <div class="listScroll">
         <table class="Table">
@@ -21,23 +29,26 @@
                     <th class="Table-Head-Row-Cell">会社名</th>
                     <th class="Table-Head-Row-Cell">合否</th>
                     <th class="Table-Head-Row-Cell">提出日</th>
-                    <th class="Table-Head-Row-Cell"></th>
+                
                 </tr>
             </thead>
             <tbody  class="Table-Body">
-            {%for x  in  resubmit_list:%}
+            {%for x  in  register_list:%}
      
                 <tr class="Table-Body-Row">
                     <td class="Table-Body-Row-Cell"></td>
-                    <td class="Table-Body-Row-Cell"><a href="{{url_for('report.report_detail',report_id=x[0])}}">{{x[4]}}</a></td>
+                    <td class="Table-Body-Row-Cell"><a href="{{url_for('report.report_watch',report_id=x[0])}}">{{x[4]}}</a></td>
                     <td class="Table-Body-Row-Cell">{{x[2]}}</td>
                     <td class="Table-Body-Row-Cell">{{x[1]}}</td>
-                    <td class="Table-Body-Row-Cell"><button><a href="{{url_for('report.resubmit',report_id=x[0])}}">再提出</a></button></td>
                 </tr>
             {%endfor%}
             </tbody>
         <table>
     </div>
+    
+    
     <a class="btn btn-border"  href="{{url_for('mypage')}}"><span>戻る</span></a>
+    
+
 </body>
 </html>

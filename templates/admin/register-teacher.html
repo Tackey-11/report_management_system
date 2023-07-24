@@ -7,47 +7,27 @@
     <link rel="stylesheet" href="static\css\register-account.css">
 </head>
 <body>
+
+   
+
     <h3 class="top" >報告書管理システム</h3>
     <h3 class="heading03" >新規アカウント登録</h3>
     {% if error != null %}
         <p style="color:red;text-align:center;margin-top:40px">{{error}}</p>
     {%endif%}
 
-    
 
 
-
-    <div class="box_con03">
+    <div class="box_con03" style="margin-top:60px;">
         <form action="{{url_for('register_exe')}}" method="post">
         <table class="formTable">
-          <tr>
-            <tr>
-                <th>学籍番号<span>必須</span></th>
-                <td><input type="number" name="student_number" class="wide"></td>
-              </tr>
-            <th>クラス<span>必須</span></th>
-            <td>
-                <select size=1 name="school_class">
-                    <option value=1>情報システム科1年</option>
-                    <option value=2>情報システム科2年</option>
-                    <option value=3>総合システム工学科1年</option>
-                    <option value=4>総合システム工学科2年</option>
-                    <option value=5>総合システム工学科3年</option>
-                    <option value=6>高度情報工学科1年</option>
-                    <option value=7>高度情報工学科2年</option>
-                    <option value=8>高度情報工学科3年</option>
-                    <option value=9>高度情報工学科4年</option>
-                </select>
-
-            </td>
-          </tr>
           <tr>
             <th>氏名<span>必須</span></th>
             <td><input type="text" name="user_name" class="wide"></td>
           </tr>
           <tr>
             <th>メールアドレス<span>必須</span></th>
-            <td><input type="text" autocomplete="off" name="mail" class="wide"></td>
+            <td><input type="email" autocomplete="off" name="mail" class="wide"></td>
           </tr>
           <tr>
             <th>パスワード<span>必須</span></th>
@@ -61,9 +41,6 @@
         </p>
       </form>
     </div>
-
-
-
 
 
 

@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 import os
 import email.utils
 
-def send_mail(to, subject, body):
+def send_mail(to, subject, body, name, teacher_name,teacher_mail):
     ID = 's.takisawa.sys22@morijyobi.ac.jp'
     PASS = os.environ['MAIL_PASS']
     HOST = 'smtp.gmail.com'
@@ -16,8 +16,8 @@ def send_mail(to, subject, body):
     msg.attach(MIMEText(body, 'html'))
     
     msg['Subject'] = subject
-    msg['From'] = email.utils.formataddr(('システム',ID))
-    msg['To'] = email.utils.formataddr(('ユーザ様',to))
+    msg['From'] = email.utils.formataddr(teacher_name)
+    msg['To'] = email.utils.formataddr((name+'様',to))
     
     #mailを送る処理
     server = SMTP(HOST,PORT)

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\watch-report.css">
+</head>
+<body>
+    <h3 class="top">報告書管理システム</h3>
+    <h3 class="heading03">報告書閲覧</h3>
+
+    <iframe src="C:\Users\takisawa\Desktop\就活報告書管理システム\report_management_system\就職試験報告書.pdf" width="600" height="332" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border:none;"></iframe>
+    
+    <a  class="btn btn-border"style="margin-left:40px;"  href="{{url_for('report_delete',report_id=report_detail[0])}}"><spa>削除</span></a>
+    <a class="btn btn-border" style="margin-left:-250px;" href="{{url_for('report_list')}}"><span>戻る</span></a>
+</body>
+</html>

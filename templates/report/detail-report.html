@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>報告書詳細</title>
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\create-report.css">
 </head>
 <body>
+    <h3 class="top" >報告書管理システム</h3>
+    <h3  class="heading03">報告書編集</h3>
+
+    <div class="listScroll">
     <table border="1" rules="groups" style="text-align:left;">
         <form action="{{url_for('report.report_edit')}}" method="post">
         <tbody>
@@ -148,10 +153,12 @@
             </tr>
 
             <tr>
-                <th><button type="submit" style="text-align:center">編集</button></th>
+                <th><button style="margin-left:200px;" type="submit" style="text-align:center">編集</button></th>
             <tr>
         </tbody>
     </form>
     </table>
+    </div>
+    <a class="btn btn-border" style="margin-left:580px;" href="{{url_for('report.report_list')}}"><span>戻る</span></a>
 </body>
 </html>

@@ -3,61 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  
     <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\watch-report.css">
 </head>
 <body>
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">報告書一覧</h3>
+
+    <div class="listScroll">
     <table border="1" rules="groups" style="text-align:left;">
         <tbody>
             <tr>
                 <th>提出日</th>
-                <td>{{new_report[0]}}</td>
+                <td>{{report_detail[1]}}</td>
             </tr>
             
             <tr>
                 <th>試験結果</th>
-                <td>{{new_report[1]}}</td>
+                <td>{{report_detail[2]}}</td>
             </tr>
             
             <tr>
                 <th>合否期日</th>
-                <td>{{new_report[2]}}</td>
+                <td>{{report_detail[3]}}</td>
             </tr>
             
             <tr>
                 <th>会社名</th>
-                <td>{{new_report[3]}}</td>
+                <td>{{report_detail[4]}}</td>
             </tr>
             
             <tr>
                 <th>電話</th>
-                <td>{{new_report[4]}}</td>
+                <td>{{report_detail[5]}}</td>
             </tr>
             
             <tr>
                 <th>所在地（ビル名等、詳しく記入）</th>
-                <td>{{new_report[5]}}</td>
+                <td>{{report_detail[6]}}</td>
             </tr>
             
             <tr>
                 <th>氏名</th>
-                <td>{{new_report[6]}}</td>
+                <td>{{report_detail[7]}}</td>
             </tr>
             
             <tr>
                 <th>学科</th>
-                <td>{{new_report[7]}}</td>
+                <td>{{report_detail[8]}}</td>
             </tr>
             
             <tr>
                 <th>職種</th>
-                <td>{{new_report[8]}}</td>
+                <td>{{report_detail[9]}}</td>
             </tr>
             
             <tr>
                 <th>応募形態</th>
-                <td>{{new_report[9]}}</td>
+                <td>{{report_detail[10]}}</td>
             </tr>
 
             <tr>
@@ -67,44 +70,41 @@
             <tr>
                 <th>一次</th>
                 <td>
-                    日付：{{new_report[10]}}<br>
-                    時刻：{{new_report[11]}} ~ {{new_report[12]}}<br>
-                    区分：{{new_report[13]}}<br>
-                    内容：<textarea  cols="32" rows="8">{{new_report[14]}}</textarea>
+                    日付：{{report_detail[11]}}<br>
+                    時刻：{{report_detail[12]}} ~ {{report_detail[13]}}<br>
+                    区分：{{report_detail[14]}}<br>
+                    内容：<textarea  cols="32" rows="8">{{report_detail[15]}}</textarea>
                 </td>
             </tr>
 
             <tr>
                 <th>ニ次</th>
                 <td>
-                    日付：{{new_report[15]}}<br>
-                    時刻：{{new_report[16]}} ~ {{new_report[17]}}<br>
-                    区分：{{new_report[18]}}<br>
-                    内容：<textarea  cols="32" rows="8">{{new_report[19]}}</textarea>
+                    日付：{{report_detail[16]}}<br>
+                    時刻：{{report_detail[17]}} ~ {{report_detail[18]}}<br>
+                    区分：{{report_detail[19]}}<br>
+                    内容：<textarea  cols="32" rows="8">{{report_detail[20]}}</textarea>
                 </td>
             </tr>
             
             <tr>
                 <th>三次</th>
                 <td>
-                    日付：{{new_report[20]}}<br>
-                    時刻：{{new_report[21]}} ~ {{new_report[22]}}<br>
-                    区分：{{new_report[23]}}<br>
-                    内容：<textarea   cols="32" rows="8">{{new_report[24]}}</textarea>
+                    日付：{{report_detail[21]}}<br>
+                    時刻：{{report_detail[22]}} ~ {{report_detail[23]}}<br>
+                    区分：{{report_detail[24]}}<br>
+                    内容：<textarea   cols="32" rows="8">{{report_detail[25]}}</textarea>
                 </td>
             </tr>
             
             <tr>
                 <th>後輩へコメント</th>
-                <td><textarea   cols="32" rows="8">{{new_report[25]}}</textarea></td>
+                <td><textarea   cols="32" rows="8">{{report_detail[26]}}</textarea></td>
             </tr>
         </tbody>    
     </table>
+</div>
 
-    <p>この内容で提出しますか？</p>
-    <a href="{{url_for('report.report_register_confirm')}}">提出</a>
-    <a href="{{url_for('report.report_create')}}">戻る</a>
-
-
+    <a class="btn btn-border" href="{{url_for('report.register_list')}}"><span>戻る</span></a>
 </body>
 </html>

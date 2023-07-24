@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>就活報告書管理システム</title>
+    <link rel="stylesheet" href="static\css\menu.css">
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\create-report.css">
+   
 </head>
 <body>
-    <h2>報告書作成</h2>
+    <h3 class="top" >報告書管理システム</h3>
+    <h3  class="heading03">報告書作成</h3>
 
     {% if error != null %}
         <p style="color:red">{{error}}</p>
     {%endif%}
-
-    <table border="1" rules="groups" style="text-align:left;">
+    <div class="listScroll">
+    <table border="1" rules="groups" style="text-align:left;" class="scroll">
         <form action="{{url_for('report.report_register')}}" method="post">
         <tbody>
             <tr>
@@ -142,12 +146,13 @@
             </tr>
 
             <tr>
-                <th><button type="submit" style="text-align:center">提出</button></th>
+                <th><button style="margin-left:200px;" type="submit" style="text-align:center">提出</button></th>
             <tr>
         </tbody>
     </form>
     </table>
+</div>
 
-    <a href="{{url_for('mypage')}}">戻る</a>
+<a class="btn btn-border" style="margin-left:580px;" href="{{url_for('mypage')}}"><span>戻る</span></a>
 </body>
 </html>

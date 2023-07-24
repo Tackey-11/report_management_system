@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>報告書編集</title>
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\report.css">
 </head>
 <body>
-    <p>報告書編集しました。</p>
-    <a href="{{url_for('report.report_list')}}">再編集</a>
-    <a href="{{url_for('mypage')}}">メニューへ</a> 
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">報告書編集</h3>
+    <h1 style="text-align:center;margin-top:140px;font-size:40px;">報告書を編集しました。</h1>
+  
+    <a  class="btn btn-border" style="margin-left:500px;margin-top:210px;" href="{{url_for('report.report_list')}}"><span>再編集</span></a>
+    <a  class="btn btn-border" style="margin-top:210px;"href="{{url_for('mypage')}}"><span>メニューへ</span></a> 
     
 </body>
 </html>

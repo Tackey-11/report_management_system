@@ -174,8 +174,6 @@ def resubmit_end_page():
 
 
 
-
-
 @report_bp.route('/detail')
 def report_detail():
     report_id = request.args.get('report_id')
@@ -263,3 +261,25 @@ def report_edit():
 @report_bp.route('end',methods=['GET'])
 def report_edit_end():
     return render_template('report/edit-end.html')
+
+#報告書閲覧
+#報告書検索
+@report_bp.route('/search')
+def search():
+    word = request.args.get('word')
+    search_list = db.report_search(word)
+  
+    return render_template('report/search-result.html',search_list=search_list)
+
+#提出報告書一覧
+@report_bp.route('/report')
+def register_list():
+    register_list = db.register_list()
+    return render_template('report/report.html',register_list=register_list)
+
+#報告書閲覧
+@report_bp.route('/watch')
+def report_watch():
+    report_id = request.args.get('report_id')
+    report_detail = db.report_detail(report_id)
+    return render_template('report/watch-report.html',report_detail=report_detail)

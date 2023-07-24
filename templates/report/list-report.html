@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\static\css\list-report.css">
     <title>報告書管理システム</title>
 </head>
 <body>
@@ -10,28 +11,35 @@
     <p style="color:red">{{error}}</p>
     {%endif%}
      
-
-    <h3>作成した報告書</h3>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>会社名</th>
-            <th>合否</th>
-            <th>提出日</th>
-            <th></th>
-        </tr>
-       
-        {%for x  in  report_list:%}
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">作成した報告書</h3>
+    <div class="listScroll">
+        <table class="Table">
+            <thead class="Table-Head">
+                <tr class="Table-Head-Row">
+                    <th class="Table-Head-Row-Cell">No</th>
+                    <th class="Table-Head-Row-Cell">会社名</th>
+                    <th class="Table-Head-Row-Cell">合否</th>
+                    <th class="Table-Head-Row-Cell">提出日</th>
+                
+                </tr>
+            </thead>
+            <tbody  class="Table-Body">
+            {%for x  in  report_list:%}
      
-            <tr>
-                <td></td>
-                <td><a href="{{url_for('report.report_detail',report_id=x[0])}}">{{x[4]}}</a></td>
-                <td>{{x[2]}}</td>
-                <td>{{x[1]}}</td>
-            </tr>
-        {%endfor%}
-       
-    <table>
-      
+                <tr class="Table-Body-Row">
+                    <td class="Table-Body-Row-Cell"></td>
+                    <td class="Table-Body-Row-Cell"><a href="{{url_for('report.report_detail',report_id=x[0])}}">{{x[4]}}</a></td>
+                    <td class="Table-Body-Row-Cell">{{x[2]}}</td>
+                    <td class="Table-Body-Row-Cell">{{x[1]}}</td>
+                </tr>
+            {%endfor%}
+            </tbody>
+        <table>
+    </div>
+    
+    
+    <a class="btn btn-border"  href="{{url_for('mypage')}}"><span>戻る</span></a>
+    
 </body>
 </html>

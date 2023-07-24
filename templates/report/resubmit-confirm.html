@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\report.css">
 </head>
 <body>
-    <h2>報告書を再提出しますか？</h2>
-    <button><a href="{{url_for('report.resubmit_end',report_id=report_id)}}">OK</button>
-    
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">再提出</h3>
+    <h2 style="text-align:center;margin-top:140px;font-size:40px;">報告書を再提出しますか？</h2>
+    <a class="btn btn-border" style="margin-left:500px;margin-top:210px;" href="{{url_for('report.resubmit_end',report_id=report_id)}}">OK</a>
+    <a class="btn btn-border" style="margin-top:210px;" href="{{url_for('report.resubmit_list')}}">戻る</a>
 </body>
 </html>

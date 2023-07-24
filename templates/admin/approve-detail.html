@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\watch-report.css">
+</head>
+<body>
+
+  
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">報告書承認</h3>
+
+    <div class="listScroll">
+    <table border="1" rules="groups" style="text-align:left;">
+        <tbody>
+            <tr>
+                <th>提出日</th>
+                <td>{{approve_detail[1]}}</td>
+            </tr>
+            
+            <tr>
+                <th>試験結果</th>
+                <td>{{approve_detail[2]}}</td>
+            </tr>
+            
+            <tr>
+                <th>合否期日</th>
+                <td>{{approve_detail[3]}}</td>
+            </tr>
+            
+            <tr>
+                <th>会社名</th>
+                <td>{{approve_detail[4]}}</td>
+            </tr>
+            
+            <tr>
+                <th>電話</th>
+                <td>{{approve_detail[5]}}</td>
+            </tr>
+            
+            <tr>
+                <th>所在地（ビル名等、詳しく記入）</th>
+                <td>{{approve_detail[6]}}</td>
+            </tr>
+            
+            <tr>
+                <th>氏名</th>
+                <td>{{approve_detail[7]}}</td>
+            </tr>
+            
+            <tr>
+                <th>学科</th>
+                <td>{{approve_detail[8]}}</td>
+            </tr>
+            
+            <tr>
+                <th>職種</th>
+                <td>{{approve_detail[9]}}</td>
+            </tr>
+            
+            <tr>
+                <th>応募形態</th>
+                <td>{{approve_detail[10]}}</td>
+            </tr>
+
+            <tr>
+                <th>試験内容</th>
+            </tr>
+
+            <tr>
+                <th>一次</th>
+                <td>
+                    日付：{{approve_detail[11]}}<br>
+                    時刻：{{approve_detail[12]}} ~ {{approve_detail[13]}}<br>
+                    区分：{{approve_detail[14]}}<br>
+                    内容：<textarea  cols="32" rows="8">{{approve_detail[15]}}</textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>ニ次</th>
+                <td>
+                    日付：{{approve_detail[16]}}<br>
+                    時刻：{{approve_detail[17]}} ~ {{approve_detail[18]}}<br>
+                    区分：{{approve_detail[19]}}<br>
+                    内容：<textarea  cols="32" rows="8">{{approve_detail[20]}}</textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>三次</th>
+                <td>
+                    日付：{{approve_detail[21]}}<br>
+                    時刻：{{approve_detail[22]}} ~ {{approve_detail[23]}}<br>
+                    区分：{{approve_detail[24]}}<br>
+                    内容：<textarea   cols="32" rows="8">{{approve_detail[25]}}</textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>後輩へコメント</th>
+                <td><textarea   cols="32" rows="8">{{approve_detail[26]}}</textarea></td>
+            </tr>
+        </tbody>    
+    </table>
+</div>
+
+
+
+    <div style="margin-left:420px;margin-top:40px;">
+    <h1>再提出用メール</h1>
+    <form action="{{url_for('send')}}" method="post">
+        <input type="hidden" name="report_id" value="{{approve_detail[0]}}">
+        <input type="hidden" name="student_id" value="{{approve_detail[27]}}">
+        <textarea cols="64" rows="8" name="body" placeholder="再提出用の入力フォーム"></textarea>
+        <button type="submit">再提出</button>
+    </form>
+    </div>
+
+    <a class="btn btn-border"  style="margin-left:500px;margin-top:20px;" href="{{url_for('approve_list')}}">戻る</a>
+    <a class="btn btn-border" style=" margin-left:15px;margin-top:20px;" href="{{url_for('approve_confirm',report_id=approve_detail[0])}}">承認</a>
+
+</body>
+</html>

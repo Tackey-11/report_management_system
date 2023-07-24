@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="\static\css\report.css">
+    <title>報告書管理システム</title>
+</head>
+<body>
+    
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">報告書一覧</h3>
+
+    <form action="{{url_for('report.search')}}" class="search-form-005" autocomplete="off">
+        <label>
+            <input type="search" name="word" placeholder="会社名">
+        </label>
+        <button type="submit">検索</button>
+    </form>
+
+
+        <div class="listScroll">
+            <table class="Table">
+                <thead class="Table-Head">
+                    <tr class="Table-Head-Row">
+                        <th class="Table-Head-Row-Cell">No</th>
+                        <th class="Table-Head-Row-Cell">会社名</th>
+                        <th class="Table-Head-Row-Cell">合否</th>
+                        <th class="Table-Head-Row-Cell">提出日</th>
+                    
+                    </tr>
+                </thead>
+                <tbody  class="Table-Body">
+                {%for x  in  search_list:%}
+         
+                    <tr class="Table-Body-Row">
+                        <td class="Table-Body-Row-Cell"></td>
+                        <td class="Table-Body-Row-Cell"><a href="{{url_for('report.report_watch',report_id=x[0])}}">{{x[4]}}</a></td>
+                        <td class="Table-Body-Row-Cell">{{x[2]}}</td>
+                        <td class="Table-Body-Row-Cell">{{x[1]}}</td>
+                    </tr>
+                {%endfor%}
+                </tbody>
+            <table>
+        </div>
+        
+        
+        <a class="btn btn-border"  href="{{url_for('mypage')}}"><span>戻る</span></a>
+    </form>
+</body>
+</html>

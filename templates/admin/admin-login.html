@@ -16,14 +16,14 @@
     <p style="color:blue;text-align:center;margin-top:15px;margin-bottom:-15px;">{{msg}}</p>
     {% endif%}
 
-    
+
 
     <div class="form-wrapper">
         <h1>Sign In</h1>
         <form action="{{url_for('login')}}" method="post" >
           <div class="form-item">
             <label for="email"></label>
-            <input type="email"autocomplete="off" name="mail" value="{{data.mail if data is defined else ''}}" placeholder="Email"></input>
+            <input type="email" name="mail" value="{{data.mail if data is defined else ''}}" autocomplete="off" placeholder="Email"></input>
           </div>
           <div class="form-item">
             <label for="password"></label>
@@ -37,10 +37,5 @@
           <p><a href="{{url_for('register_form')}}">新規登録</a></p>
         </div>
       </div>
-
-
-
-
- 
 </body>
 </html>
