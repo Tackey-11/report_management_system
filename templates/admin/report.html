@@ -13,9 +13,9 @@
     <h3 class="top" >報告書管理システム</h3>
     <h3 class="heading03">報告書一覧</h3>
 
-    <form action="{{url_for('search')}}" class="search-form-005" autocomplete="off">
+    <form action="{{url_for('search')}}" class="search-form-005" >
         <label>
-            <input type="search" name="word" placeholder="会社名">
+            <input type="search" name="word" placeholder="会社名" autocomplete="off">
         </label>
         <button type="submit">検索</button>
     </form>

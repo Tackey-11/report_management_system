@@ -16,8 +16,8 @@ def send_mail(to, subject, body, name, teacher_name,teacher_mail):
     msg.attach(MIMEText(body, 'html'))
     
     msg['Subject'] = subject
-    msg['From'] = email.utils.formataddr(teacher_name)
-    msg['To'] = email.utils.formataddr((name+'様',to))
+    msg['From'] = email.utils.formataddr((teacher_name,ID))
+    msg['To'] = email.utils.formataddr((name,to))
     
     #mailを送る処理
     server = SMTP(HOST,PORT)

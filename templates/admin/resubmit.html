@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>報告書管理システム</title>
+    <link rel="stylesheet" href="\static\css\report.css">
 </head>
 <body>
-    <h2>再提出</h2>
-    <p>学生に再提出のメールを送りました。</P>
-    <a href="{{url_for('mypage')}}">メニューへ</a>
-    <a href="{{url_for('approve_list')}}">もう一度</a>
+
+    <h3 class="top" >報告書管理システム</h3>
+    <h3 class="heading03">再提出</h3>
+
+    <h1 style="text-align:center;margin-top:140px;font-size:40px;">学生に再提出のメールを送りました。</h1>
+    <a class="btn btn-border" style="margin-left:510px;margin-top:210px;" href="{{url_for('mypage')}}">戻る</a>
+    <a class="btn btn-border" style="margin-top:210px;" href="{{url_for('approve_list')}}">もう一度</a>
+
 </body>
 </html>
